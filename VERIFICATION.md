@@ -117,3 +117,14 @@ All three case assertions passed. Actual Airflow metadata, the `aggregate` task 
 The test environment occupied approximately **255 MB**. Its local API and test-owned DAG processes stopped automatically; the environment, metadata, raw logs and downloaded constraints are removed after verification. Docker, a persistent scheduler/UI, Slack posting and LLM inference were not used. Existing project workload/support records were not changed by the isolated test.
 
 The scheduler's continuous two-minute cadence, Airflow UI, container deployment and multi-worker production behavior remain unverified. Automatic Slack incident/resolution notifications are also still a separate unverified integration; Slack command/AI-thread/Helpful feedback and monitoring webhook delivery have their own live evidence.
+
+
+## Optional extension checks — 2026-10-23
+
+Added opt-in Spark example, Flink SQL Gateway/Trino/Druid SQL checks, Splunk HEC sender, and PagerDuty trigger/resolve sender. None is wired into the core incident flow or launched automatically. No optional engine, Jupyter installation, or additional dependency was downloaded.
+
+`python3 -m unittest discover -s tests -p test_optional_services.py -v`: **8 passed** using fake transports. These check response contracts, SQL/payload construction, result mismatches, Flink cleanup, stable PagerDuty correlation keys, and rejection of insecure remote URLs/cross-origin pagination. They do not prove live compatibility with those services. Spark source was syntax-checked only; no Spark runtime was available.
+
+All **4 notebook code cells** executed as ordinary Python against the existing local synthetic SQLite database using read-only connections. The notebook has no persisted outputs or credentials. No Jupyter kernel/server was launched, so Jupyter runtime compatibility remains unverified.
+
+Added customer/support metric definitions and documented AI-review examples grounded in prior test failures and fixes. Real peer feedback, owner presentation, manual-versus-assisted support-time measurement, optional vendor/engine runtime tests, and multi-cloud deployment remain absent. Optional source is not a basis for claiming those technologies as verified experience.

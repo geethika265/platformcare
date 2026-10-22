@@ -124,6 +124,15 @@ Offline evaluation writes `output/evaluation-offline.json`, labeled as MCP integ
 
 Metrics distinguish failed runs, data freshness, and API availability. `platform_has_success=0` means no successful output; freshness=0 alone must not be interpreted as healthy. Incident resolution time includes only resolved incidents. Support request latency measures response recording; it is not a human customer-success or production MTTR metric. Feedback fractions include their sample count. Lexical runbook retrieval is intentionally simple and inspectable.
 
+## Explore and extend
+
+- [Customer-impact and support metric definitions](docs/CUSTOMER_METRICS.md)
+- [Read-only notebook walkthrough](notebooks/customer_support_walkthrough.ipynb)
+- [AI-assisted code review examples](docs/AI_CODE_REVIEW.md)
+- [Optional Spark, Flink, Trino, Druid, Splunk, and PagerDuty checks](docs/OPTIONAL_SERVICES.md)
+
+Optional service adapters have local contract tests, but no live vendor/engine verification. They do not run automatically, install services, or establish multi-cloud experience. Core verified behavior is recorded separately in `VERIFICATION.md`.
+
 ## Portfolio demo
 
 1. Show the synthetic workload, owner, consumer, and freshness objective.

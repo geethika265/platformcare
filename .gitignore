@@ -12,3 +12,7 @@ __pycache__/
 .pytest_cache/
 *.pyc
 output/
+
+# Personal application material is not project source.
+resume-platformcare/
+.ipynb_checkpoints/
