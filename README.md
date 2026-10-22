@@ -133,7 +133,7 @@ Metrics distinguish failed runs, data freshness, and API availability. `platform
 5. Run healthy; show incident resolution and restored freshness.
 6. Show feedback and support metrics; explain the demo's limits.
 
-Keep a short narrated video, screenshots, architecture explanation, and actual evaluation results. Ask a peer to try it and document feedback only after receiving it. See `docs/JD_COVERAGE.md`, `docs/DEMO.md`, and `VERIFICATION.md`.
+Keep a short narrated video, screenshots, architecture explanation, and actual evaluation results. Ask a peer to try it and document feedback only after receiving it. See `docs/DEMO.md` and `VERIFICATION.md`.
 
 ## References
 
