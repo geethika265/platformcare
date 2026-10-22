@@ -1,0 +1,24 @@
+{
+  "platform": "darwin-arm64",
+  "verified_date": "2026-10-22",
+  "artifacts": [
+    {
+      "name": "prometheus",
+      "version": "3.13.5",
+      "url": "https://github.com/prometheus/prometheus/releases/download/v3.13.5/prometheus-3.13.5.darwin-arm64.tar.gz",
+      "sha256": "909a07556df18afccdc8eb2c80c0b14f347b631b0e34c95bcabfd6d6a0080c92"
+    },
+    {
+      "name": "alertmanager",
+      "version": "0.34.1",
+      "url": "https://github.com/prometheus/alertmanager/releases/download/v0.34.1/alertmanager-0.34.1.darwin-arm64.tar.gz",
+      "sha256": "a3941879f340ef12a4cc1a479c82bd8520611265ea8d1ee25c88bd5f944d8293"
+    },
+    {
+      "name": "grafana-oss",
+      "version": "13.2.4",
+      "url": "https://dl.grafana.com/grafana/release/13.2.4/grafana_13.2.4_38252365904_darwin_arm64.tar.gz",
+      "sha256": "a910966466359212f1d875748a72a4638c7d3724448d0c369210b31d763b165d"
+    }
+  ]
+}

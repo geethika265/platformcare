@@ -1,0 +1,13 @@
+{
+  "display_information": {"name": "PlatformCare", "description": "Synthetic data-platform health and support lab"},
+  "features": {
+    "bot_user": {"display_name": "PlatformCare", "always_online": false},
+    "slash_commands": [
+      {"command": "/platform-health", "description": "Get pipeline health and freshness", "should_escape": false},
+      {"command": "/platform-help", "description": "Investigate a pipeline support question", "usage_hint": "Why did the job fail?", "should_escape": false},
+      {"command": "/incident-summary", "description": "Read an incident by ID", "usage_hint": "incident ID", "should_escape": false}
+    ]
+  },
+  "oauth_config": {"scopes": {"bot": ["commands", "chat:write"]}},
+  "settings": {"socket_mode_enabled": true, "interactivity": {"is_enabled": true}, "org_deploy_enabled": false}
+}

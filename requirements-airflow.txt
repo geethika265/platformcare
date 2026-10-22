@@ -1,0 +1,3 @@
+# Keep Airflow in a separate environment/container from the main application.
+# Install with the official constraints file for your Python version.
+apache-airflow==3.3.2

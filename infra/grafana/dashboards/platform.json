@@ -1,0 +1,418 @@
+{
+  "uid": "platformcare",
+  "title": "PlatformCare - customer health and support",
+  "schemaVersion": 39,
+  "version": 3,
+  "refresh": "5s",
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "panels": [
+    {
+      "id": 100,
+      "title": "Usage analytics - customer impact",
+      "type": "text",
+      "gridPos": {
+        "x": 0,
+        "y": 0,
+        "w": 24,
+        "h": 4
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "**Consumer:** Daily usage dashboard \u00b7 **Owner:** demo-data-team \u00b7 **Workload:** synthetic\n\n**Freshness objective:** output age \u2264 300 seconds. Check whether a successful output exists before interpreting data age. A failed job can affect data readiness while the API remains available.\n\n**Next step:** inspect the failed run logs and matching runbook in PlatformCare or use `/platform-help` in Slack."
+      }
+    },
+    {
+      "id": 1,
+      "title": "Data age / 300s objective",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "platform_freshness_seconds",
+          "refId": "A",
+          "legendFormat": "Data age / 300s objective"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 300
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area"
+      }
+    },
+    {
+      "id": 2,
+      "title": "Successful output exists",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 6,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "platform_has_success",
+          "refId": "A",
+          "legendFormat": "Successful output exists"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "No"
+                },
+                "1": {
+                  "text": "Yes"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area"
+      }
+    },
+    {
+      "id": 3,
+      "title": "Latest job failed",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 12,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "platform_latest_failed",
+          "refId": "A",
+          "legendFormat": "Latest job failed"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "value",
+              "options": {
+                "0": {
+                  "text": "No"
+                },
+                "1": {
+                  "text": "Yes"
+                }
+              }
+            }
+          ]
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area"
+      }
+    },
+    {
+      "id": 4,
+      "title": "Open incidents",
+      "type": "stat",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 18,
+        "y": 4,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "expr": "platform_support_open_incidents",
+          "refId": "A",
+          "legendFormat": "Open incidents"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "thresholds"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area"
+      }
+    },
+    {
+      "id": 5,
+      "title": "Job duration",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 8,
+        "w": 8,
+        "h": 7
+      },
+      "targets": [
+        {
+          "expr": "platform_last_run_duration_seconds",
+          "refId": "A",
+          "legendFormat": "Job duration"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 6,
+      "title": "Support requests",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 8,
+        "y": 8,
+        "w": 8,
+        "h": 7
+      },
+      "targets": [
+        {
+          "expr": "platform_support_requests",
+          "refId": "A",
+          "legendFormat": "Support requests"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 7,
+      "title": "First response time",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 16,
+        "y": 8,
+        "w": 8,
+        "h": 7
+      },
+      "targets": [
+        {
+          "expr": "platform_support_mean_first_response_seconds",
+          "refId": "A",
+          "legendFormat": "First response time"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 8,
+      "title": "Incident resolution time",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 0,
+        "y": 15,
+        "w": 8,
+        "h": 7
+      },
+      "targets": [
+        {
+          "expr": "platform_support_mean_resolution_seconds",
+          "refId": "A",
+          "legendFormat": "Incident resolution time"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s"
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 9,
+      "title": "Feedback helpfulness",
+      "type": "timeseries",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "platform-prometheus"
+      },
+      "gridPos": {
+        "x": 8,
+        "y": 15,
+        "w": 8,
+        "h": 7
+      },
+      "targets": [
+        {
+          "expr": "platform_support_helpful_rate",
+          "refId": "A",
+          "legendFormat": "Feedback helpfulness"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit"
+        },
+        "overrides": []
+      }
+    }
+  ],
+  "tags": [
+    "synthetic",
+    "portfolio"
+  ]
+}

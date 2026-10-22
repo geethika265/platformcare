@@ -1,0 +1,7 @@
+.venv
+.env
+data
+output
+*.pdf
+.git
+__pycache__

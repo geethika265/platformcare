@@ -1,0 +1,23 @@
+groups:
+  - name: customer-impact
+    rules:
+      - alert: UsagePipelineFailed
+        expr: platform_latest_failed == 1
+        for: 10s
+        labels: {severity: warning, owner: demo-data-team}
+        annotations: {summary: "Usage aggregate failed; inspect job logs and last successful output"}
+      - alert: UsageDataStale
+        expr: platform_freshness_seconds > 300 or platform_has_success == 0
+        for: 30s
+        labels: {severity: warning, owner: demo-data-team}
+        annotations: {summary: "Usage data is stale or no successful output exists"}
+      - alert: UsagePipelineSlow
+        expr: platform_last_run_duration_seconds > 2
+        for: 10s
+        labels: {severity: warning, owner: demo-data-team}
+        annotations: {summary: "Usage aggregate exceeded the demo latency objective"}
+      - alert: PlatformApiUnavailable
+        expr: up{job="platformcare"} == 0
+        for: 15s
+        labels: {severity: critical, owner: demo-data-team}
+        annotations: {summary: "PlatformCare API unavailable; support evidence cannot be queried"}

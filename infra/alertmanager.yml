@@ -1,0 +1,16 @@
+route:
+  receiver: platformcare
+  group_by: [alertname]
+  group_wait: 5s
+  group_interval: 15s
+  repeat_interval: 1h
+receivers:
+  - name: platformcare
+    webhook_configs:
+      - url: http://api:8000/webhooks/alerts
+        send_resolved: true
+        http_config:
+          authorization:
+            type: Bearer
+            credentials: local-demo-change-me
+# If PLATFORM_TOKEN is changed, update credentials above to match before starting.
